@@ -1,0 +1,42 @@
+from .. import SumXPlayer, SumXAction, SumXState
+
+from typing import List
+import numpy as np
+
+
+class MinimaxSumXPlayer(SumXPlayer):
+
+    def __call__(self, state: SumXState) -> SumXAction:
+       
+        a = SumXAction(
+                number = np.argmax(self.get_action_values(state)),
+        )
+
+	print(f'minimax choosing: {a}')
+	return a
+
+
+    def get_action_values(self, state: SumXState) -> List[int]:
+
+        return [
+                self.minimax(SumXState(
+                        sum = state.sum + number,
+                        round = state.round + 1,
+                ))
+
+                for number in range(self.options.y)
+        ]
+
+
+    def minimax(self, state: SumXState) -> int:
+
+        is_leaf = state.round == self.options.x
+        is_min = not state.round % 2
+
+        if is_leaf:
+            assert not is_min
+            return state.sum != self.options.x
+
+        else:
+            action_values = self.get_action_values(state)
+            return min(action_values) if is_min else max(action_values)
