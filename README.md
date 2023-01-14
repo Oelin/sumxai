@@ -1,4 +1,4 @@
-# Minimax SumX
+# SumX AI
 
 An AI which solves the game SumX using [minimax](https://en.wikipedia.org/wiki/minimax).
 
