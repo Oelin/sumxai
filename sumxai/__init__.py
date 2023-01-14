@@ -1,16 +1,3 @@
-'''
-# Minimax SumX
-
-An optimal strategy for SumX using minimax.
-
-
-SumX is a two player zero-sum game consisting of X rounds. Each round, a player may choose a number between 0 and Y to add to the "running total" which starts at 0. Each player's aim is to ensure the total reaches exactly X on the final round. If they succeed then they win; otherwise the second player wins. 
-
-This game can be played optimally using a minimax strategy. For small X and Y, the game can be played perfectly using a minimax strategy.
-:wq
-'''
-
-
 from typing import Tuple, Iterator
 from dataclasses import dataclass
 
